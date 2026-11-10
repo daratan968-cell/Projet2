@@ -1,0 +1,13 @@
+[project]
+name = "projet2-backend"
+version = "0.1.0"
+description = "Backend skeleton for Projet2"
+dependencies = [
+    "fastapi>=0.110.0",
+    "pydantic-settings>=2.2.1",
+    "uvicorn>=0.28.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"

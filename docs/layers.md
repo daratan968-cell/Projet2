@@ -1,32 +1,31 @@
+# AI Study Assistant — Карта слоёв бэкенда
 
-# AI Study Assistant — Backend Layer Map
+## Описание проекта
 
-## Project description
+AI Study Assistant помогает студентам изучать дисциплины,
+проходить тесты (квизы) и отслеживать свой прогресс в обучении.
 
-AI Study Assistant helps students study subjects,
-take quizzes and track their learning progress.
+## Роли пользователей
 
-## User roles
+- Преподаватель (Teacher) — создаёт тесты.
+- Студент (Student) — проходит тесты и просматривает результаты.
 
-- Teacher — creates quizzes.
-- Student — takes quizzes and views results.
+## Карта слоёв (Layer map)
 
-## Layer map
-
-| Layer | Teacher creates quiz | Student takes quiz |
+| Слой (Layer) | Преподаватель создаёт тест | Студент проходит тест |
 |---|---|---|
 | Router | POST /api/quizzes · Teacher | POST /api/quizzes/{id}/attempts · Student |
 | Schema | QuizCreate → QuizRead | AttemptCreate → AttemptRead |
-| Service | Check title and teacher permissions | Check publication, validate answers, calculate score |
+| Service | Проверка названия и прав преподавателя | Проверка публикации, валидация ответов, подсчёт баллов |
 | Repository | QuizRepository.create | AttemptRepository.create |
 | Model | quizzes, questions | attempts, questions |
-| Error → HTTP | Short title → 422; Student creates quiz → 403 | Quiz not found → 404; Wrong answer count → 400 |
+| Error → HTTP | Короткое название → 422; Студент создаёт тест → 403 | Тест не найден → 404; Неверное количество ответов → 400 |
 
-## Architecture rules
+## Архитектурные правила
 
-- Router must not contain SQL.
-- Schema validates input and output.
-- Service contains business logic.
-- Repository handles database operations.
-- Model describes database tables.
-- Secrets are stored only in .env.
+- Router не должен содержать SQL-запросов.
+- Schema валидирует входные и выходные данные.
+- Service содержит всю бизнес-логику.
+- Repository отвечает за операции с базой данных.
+- Model описывает таблицы базы данных.
+- Секретные ключи хранятся только в .env.

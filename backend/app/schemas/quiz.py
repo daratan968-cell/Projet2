@@ -23,3 +23,8 @@ class QuizRead(BaseModel):
     subject_id: int | None = None
 
     model_config = ConfigDict(from_attributes=True)
+
+
+# Схема представления квиза для преподавателя
+class QuizForTeacher(QuizRead):
+    pass

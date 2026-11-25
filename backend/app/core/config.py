@@ -21,5 +21,6 @@ class Settings(BaseSettings):
     environment: str = "local"
     database_url: str = "postgresql+psycopg://quizai:change-me-local-only@localhost:5432/quizai_db"
     secret_key: str = "default_fallback_secret_key"
+    demo_user_email: str = "teacher@demo.kz"
 
 settings = Settings()

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class User(BaseModel):
@@ -6,3 +6,5 @@ class User(BaseModel):
     email: str = ""
     full_name: str = ""
     role: str = "teacher"  # student | teacher | admin
+
+    model_config = ConfigDict(from_attributes=True)
